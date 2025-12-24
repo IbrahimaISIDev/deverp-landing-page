@@ -1,7 +1,9 @@
 export { Header } from './Header';
 export { Hero } from './Hero';
+export { TrustedBy } from './TrustedBy';
 export { ProblemSolution } from './ProblemSolution';
 export { Features } from './Features';
+export { ProductDemo } from './ProductDemo';
 export { Benefits } from './Benefits';
 export { Testimonials } from './Testimonials';
 export { Contact } from './Contact';

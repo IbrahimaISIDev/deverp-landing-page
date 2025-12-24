@@ -21,17 +21,48 @@ const FeatureCard = ({ icon: Icon, title, description, gradient, delay, link }: 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay }}
-        whileHover={{ y: -8, transition: { duration: 0.3 } }}
-        className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer border border-slate-100 h-full"
+        whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
+        className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer border border-slate-200/50 h-full overflow-hidden"
+        style={{
+          transformStyle: 'preserve-3d',
+          perspective: '1000px',
+        }}
       >
-        <div className={`w-16 h-16 bg-gradient-to-br ${gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-          <Icon className="w-8 h-8 text-white" />
+        {/* Glassmorphism Background Effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+
+        {/* Animated Border Gradient */}
+        <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${gradient} p-[2px]`}>
+          <div className="w-full h-full bg-white rounded-3xl" />
         </div>
-        <h3 className="text-2xl font-bold text-slate-900 mb-3">{title}</h3>
-        <p className="text-slate-600 leading-relaxed">{description}</p>
-        <div className="mt-6 flex items-center text-blue-600 font-semibold group-hover:gap-2 transition-all">
-          En savoir plus 
-          <ArrowRight className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+
+        {/* Content */}
+        <div className="relative z-10">
+          <motion.div
+            whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+            transition={{ duration: 0.5 }}
+            className={`w-20 h-20 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-2xl transition-shadow`}
+          >
+            <Icon className="w-10 h-10 text-white" />
+          </motion.div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:bg-clip-text transition-all">
+            {title}
+          </h3>
+
+          <p className="text-slate-600 leading-relaxed mb-6">
+            {description}
+          </p>
+
+          <div className="flex items-center text-blue-600 font-semibold group-hover:gap-2 transition-all">
+            <span>En savoir plus</span>
+            <ArrowRight className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 group-hover:translate-x-1 transition-all" />
+          </div>
+        </div>
+
+        {/* Shine Effect on Hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
         </div>
       </motion.div>
     </Link>
