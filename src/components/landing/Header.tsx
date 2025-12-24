@@ -38,12 +38,10 @@ export const Header = () => {
     closed: {
       opacity: 0,
       x: '100%',
-      transition: { duration: 0.3, ease: 'easeInOut' }
     },
     open: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.3, ease: 'easeInOut' }
     }
   };
 
@@ -174,6 +172,7 @@ export const Header = () => {
               initial="closed"
               animate="open"
               exit="closed"
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
               className="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-40 lg:hidden overflow-y-auto"
             >
               <div className="pt-24 pb-8 px-6">

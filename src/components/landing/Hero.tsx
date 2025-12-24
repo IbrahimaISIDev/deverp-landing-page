@@ -40,11 +40,12 @@ export const Hero = () => {
 
   const floatingAnimation = {
     y: [0, -20, 0],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
+  };
+
+  const floatingTransition = {
+    duration: 3,
+    repeat: Infinity,
+    ease: "easeInOut" as const
   };
 
   return (
@@ -63,6 +64,7 @@ export const Hero = () => {
       >
         <motion.div
           animate={floatingAnimation}
+          transition={floatingTransition}
           className="w-32 h-32 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full blur-3xl"
         />
       </motion.div>
@@ -75,7 +77,8 @@ export const Hero = () => {
         className="absolute top-40 right-20 opacity-20"
       >
         <motion.div
-          animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 0.5 } }}
+          animate={floatingAnimation}
+          transition={{ ...floatingTransition, delay: 0.5 }}
           className="w-48 h-48 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-3xl"
         />
       </motion.div>
@@ -88,7 +91,8 @@ export const Hero = () => {
         className="absolute bottom-40 left-1/4 opacity-25"
       >
         <motion.div
-          animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 1 } }}
+          animate={floatingAnimation}
+          transition={{ ...floatingTransition, delay: 1 }}
           className="w-40 h-40 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-3xl"
         />
       </motion.div>
