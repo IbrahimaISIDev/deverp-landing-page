@@ -22,7 +22,7 @@ const FeatureCard = ({ icon: Icon, title, description, gradient, delay, link }: 
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay }}
         whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
-        className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer border border-slate-200/50 h-full overflow-hidden"
+        className="group relative bg-white/70 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer border border-slate-200/50 h-full overflow-hidden"
         style={{
           transformStyle: 'preserve-3d',
           perspective: '1000px',
@@ -41,20 +41,20 @@ const FeatureCard = ({ icon: Icon, title, description, gradient, delay, link }: 
           <motion.div
             whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
             transition={{ duration: 0.5 }}
-            className={`w-20 h-20 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-2xl transition-shadow`}
+            className={`w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br ${gradient} rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-xl group-hover:shadow-2xl transition-shadow`}
           >
-            <Icon className="w-10 h-10 text-white" />
+            <Icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
           </motion.div>
 
-          <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:bg-clip-text transition-all">
+          <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2 md:mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:bg-clip-text transition-all">
             {title}
           </h3>
 
-          <p className="text-slate-600 leading-relaxed mb-6">
+          <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-4 md:mb-6">
             {description}
           </p>
 
-          <div className="flex items-center text-blue-600 font-semibold group-hover:gap-2 transition-all">
+          <div className="flex items-center text-blue-600 text-sm md:text-base font-semibold group-hover:gap-2 transition-all">
             <span>En savoir plus</span>
             <ArrowRight className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 group-hover:translate-x-1 transition-all" />
           </div>
@@ -98,24 +98,24 @@ export const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-24 bg-slate-50">
-      <div className="container mx-auto px-6">
+    <section id="features" className="py-16 md:py-24 bg-slate-50">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 md:mb-4 px-4">
             Fonctionnalités complètes
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto px-4">
             Tout ce dont vous avez besoin pour gérer efficacement votre établissement
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature, index) => (
             <FeatureCard key={index} {...feature} />
           ))}
